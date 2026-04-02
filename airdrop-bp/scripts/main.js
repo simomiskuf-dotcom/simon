@@ -1,8 +1,5 @@
 import { world, system, ItemStack } from "@minecraft/server";
 
-// Import the SMP archetype & quest system (runs on load)
-import "./smp.js";
-
 // ============================================================================
 //  AIRDROP SYSTEM — LOOT POOL (edit items here)
 // ============================================================================
@@ -30,7 +27,7 @@ const LOOT_POOL = [
 ];
 
 // ============================================================================
-//  AIRDROP SYSTEM — TIMER & RADIUS SETTINGS
+//  TIMER & RADIUS SETTINGS
 // ============================================================================
 // Minecraft runs at 20 ticks per second.
 //   20 minutes = 20 × 60 × 20 = 24,000 ticks
@@ -135,10 +132,7 @@ function spawnAirdrop() {
 // Airdrop loop — fires every 24,000 ticks (20 minutes)
 system.runInterval(() => spawnAirdrop(), AIRDROP_INTERVAL_TICKS);
 
-// ============================================================================
-//  STARTUP
-// ============================================================================
-
+// Startup message
 world.afterEvents.worldInitialize.subscribe(() => {
-  world.sendMessage("§e[SMP] Addon loaded — Airdrops every 20 min | Daily quests active.");
+  world.sendMessage("§e[Airdrop] Addon loaded — drops every 20 minutes.");
 });

@@ -294,3 +294,11 @@ system.runInterval(() => {
     catch { /* ignore */ }
   }
 }, 6000);
+
+// ============================================================================
+//  STARTUP
+// ============================================================================
+
+world.afterEvents.worldInitialize.subscribe(() => {
+  world.sendMessage("§e[SMP] Quest system loaded — Daily quests active.");
+});
